@@ -1,7 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-
+import MyNav from "./components/MyNav.js";
 function App() {
+  
+  
   return (
     <div className="App">
       <header className="App-header">
