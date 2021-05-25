@@ -11,7 +11,6 @@ import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
 import HomeIcon from "@material-ui/icons/Home";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
@@ -24,6 +23,14 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Collapse from "@material-ui/core/Collapse";
 import SettingsIcon from '@material-ui/icons/Settings';
 import FolderIcon from '@material-ui/icons/Folder';
+import SearchIcon from '@material-ui/icons/Search';
+import Container from '@material-ui/core/Container';
+import Paper from '@material-ui/core/Paper';
+import Card from '@material-ui/core/Card';
+import TextField from '@material-ui/core/TextField';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import Badge from '@material-ui/core/Badge';
+
 
 const useStyles = makeStyles((theme) => ({
   root: { flexGrow: 1 },
@@ -113,6 +120,7 @@ const Header = () => {
                         <ListItemIcon>
                           <FolderIcon />
                         </ListItemIcon>
+                        <ListItemText primary="VHF/UHF Radio Logging" />
                       </ListItem>
                     </List>
 
@@ -143,9 +151,9 @@ const Header = () => {
                   </ListItem>
                   <ListItem button>
                     <ListItemIcon>
-                      <InboxIcon color="primary" />
+                      <SearchIcon color="primary" />
                     </ListItemIcon>
-                    <ListItemText primary="Testing" />
+                    <ListItemText primary="SWL Database Search" />
                   </ListItem>
                 </List>
                 <Divider />
@@ -164,6 +172,7 @@ const Header = () => {
                   </ListItem>
                 </List>
                 <Divider />
+                
                 <List>
                   <ListItem button>
                     <ListItemIcon>
@@ -180,6 +189,12 @@ const Header = () => {
                 </List>
               </div>
             </Drawer>
+                      <IconButton aria-label="cart">
+                          <Badge badgeContent={0} color="secondary" number="99">
+                              <NotificationsIcon />
+                          </Badge>
+                      </IconButton>
+            
           </IconButton>
           <Typography variant="h6" className={classes.title}>
             Radio Logger
@@ -196,10 +211,62 @@ const Header = () => {
           >
             <MenuItem onClick={handleClose}>Profile</MenuItem>
             <MenuItem onClick={handleClose}>Logout</MenuItem>
+            <MenuItem onClick={handleClose}>Admin</MenuItem>
+            <MenuItem onClick={handleClose}>Register</MenuItem>
+            <MenuItem onClick={handleClose}>Settings</MenuItem>
           </Menu>
         </Toolbar>
       </AppBar>
+          <div>
+            <Container>  
+              <Paper elevation={1} variant="outlined" square>
+                  <Card>
+                      <form>
+                          <input type="text"/>
+                      </form>
+                          <form className={classes.container} noValidate>
+                              <TextField
+                                  id="date"
+                                  label="Today's Date"
+                                  type="date"
+                                  defaultValue="2017-05-24"
+                                  className={classes.textField}
+                                  InputLabelProps={{
+                                      shrink: true,
+                                  }}
+
+                              />
+                          </form>
+                          <form className={classes.container} noValidate>
+                              <TextField
+                                  id="date"
+                                  label="Time (UTC/GMT)"
+                                  type="time"
+                                  defaultValue="2017-05-24"
+                                  className={classes.textField}
+                                  InputLabelProps={{
+                                      shrink: true,
+                                  }}
+                              />
+                          </form>
+                          <form className={classes.container} noValidate>
+                              <TextField
+                                  id="number"
+                                  label="Frequency"
+                                  type="number"
+                                  defaultValue="1800"
+                                  className={classes.textField}
+                                  InputLabelProps={{
+                                      shrink: true,
+                                  }}
+                              />
+                          </form>
+                  </Card>
+              </Paper>
+            </Container>
+          </div>
     </div>
+    
   );
 };
 
